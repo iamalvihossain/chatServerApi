@@ -16,21 +16,21 @@ connectDB();
 const app = express();
 app.use(cors());
 
-// app.use(async (req, res, next) => {
-//   const token = req.headers.authorization || "";
-//   if (token) {
-//     try {
-//       const decodedToken = verify(token, process.env.JWT_SECRET);
-//       const user = await User.findById(decodedToken.id);
-//       if (user) {
-//         req.user = user; // Set req.user as the user object
-//       }
-//     } catch (error) {
-//       console.error("Failed to authenticate token");
-//     }
-//   }
-//   next();
-// });
+app.use(async (req, res, next) => {
+  const token = req.headers.authorization || "";
+  if (token) {
+    try {
+      const decodedToken = verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(decodedToken.id);
+      if (user) {
+        req.user = user; // Set req.user as the user object
+      }
+    } catch (error) {
+      console.error("Failed to authenticate token");
+    }
+  }
+  next();
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {
