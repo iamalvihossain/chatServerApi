@@ -6,7 +6,7 @@ const cors = require("cors");
 const { verify } = require("jsonwebtoken");
 const User = require("./models/user");
 const http = require("http");
- const { Server } = require("socket.io");
+const { Server } = require("socket.io");
 const socketIo = require("socket.io");
 
 const Message = require("./models/message");
@@ -42,15 +42,10 @@ const io = new Server(server, {
   },
 });
 
-
 io.on("connection", (socket) => {
   socket.on("join", ({ listingId, userId }) => {
     const room = `${listingId} - ${userId}`;
     socket.join(room);
-  });
-
-  socket.on("error", (error) => {
-    console.log(error);
   });
 
   socket.on(
@@ -64,6 +59,7 @@ io.on("connection", (socket) => {
       name,
       listingOwner,
       title,
+      listingOnwerEmail,
     }) => {
       const room = `${listingId} - ${userId}`;
       try {
@@ -82,6 +78,7 @@ io.on("connection", (socket) => {
           name,
           title,
           pic,
+          listingOnwerEmail,
         });
         await messageDoc.save();
         io.to(room).emit("message", {
@@ -93,6 +90,7 @@ io.on("connection", (socket) => {
           listingOwner,
           name,
           title,
+          listingOnwerEmail,
         });
       } catch (error) {
         console.error("Error saving message:", error);
