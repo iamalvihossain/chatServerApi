@@ -1,13 +1,14 @@
-
 const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
   userId: String,
   listingId: String,
   senderId: String,
-  listingOwner: String, 
+  listingOwner: String,
   messages: [
     {
+      senderEmail: String,
+      listingOwnerEmail: String,
       userId: String,
       senderId: String,
       listingId: String,

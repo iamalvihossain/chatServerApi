@@ -60,6 +60,7 @@ io.on("connection", (socket) => {
       listingOwner,
       title,
       listingOnwerEmail,
+      senderEmail,
     }) => {
       const room = `${listingId} - ${userId}`;
       try {
@@ -71,6 +72,7 @@ io.on("connection", (socket) => {
         messageDoc.listingOwner = listingOwner;
         messageDoc.messages.push({
           senderId,
+          senderEmail,
           text,
           userId,
           listingId,
@@ -91,6 +93,7 @@ io.on("connection", (socket) => {
           name,
           title,
           listingOnwerEmail,
+          senderEmail,
         });
       } catch (error) {
         console.error("Error saving message:", error);
