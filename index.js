@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
       name,
       listingOwner,
       title,
-      listingOnwerEmail,
+      listingOwnerEmail,
       senderEmail,
     }) => {
       const room = `${listingId} - ${userId}`;
@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
           name,
           title,
           pic,
-          listingOnwerEmail,
+          listingOwnerEmail,
         });
         await messageDoc.save();
         io.to(room).emit("message", {
@@ -92,7 +92,7 @@ io.on("connection", (socket) => {
           listingOwner,
           name,
           title,
-          listingOnwerEmail,
+          listingOwnerEmail,
           senderEmail,
         });
       } catch (error) {
