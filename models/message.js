@@ -8,7 +8,7 @@ const messageSchema = new mongoose.Schema({
   messages: [
     {
       senderEmail: String,
-      listingOnwerEmail: String,
+      listingOwnerEmail: String,
       userId: String,
       senderId: String,
       listingId: String,
