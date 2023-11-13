@@ -3,12 +3,8 @@ require("dotenv").config();
 const colors = require("colors");
 const connectDB = require("./config/db");
 const cors = require("cors");
-const { verify } = require("jsonwebtoken");
-const User = require("./models/user");
 const http = require("http");
 const { Server } = require("socket.io");
-const socketIo = require("socket.io");
-
 const Message = require("./models/message");
 
 connectDB();
