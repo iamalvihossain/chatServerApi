@@ -18,6 +18,7 @@ const messageSchema = new mongoose.Schema({
       pic: String,
       title: String,
       name: String,
+      readBy: [String], // Array of user IDs who have read the message
       createdAt: {
         type: Date,
         default: Date.now,

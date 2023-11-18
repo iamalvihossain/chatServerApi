@@ -63,6 +63,7 @@ io.on("connection", (socket) => {
           pic,
           listingOwnerEmail,
           listingOwnerName,
+          readBy: [senderId], // Add the sender's ID to the readBy array
         });
         await messageDoc.save();
         io.to(room).emit("message", {
