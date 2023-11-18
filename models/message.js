@@ -9,7 +9,7 @@ const messageSchema = new mongoose.Schema({
     {
       senderEmail: String,
       listingOwnerEmail: String,
-      listingOwnerName:String,
+      listingOwnerName: String,
       userId: String,
       senderId: String,
       listingId: String,
@@ -17,6 +17,7 @@ const messageSchema = new mongoose.Schema({
       text: String,
       pic: String,
       title: String,
+      recipientId: String,
       name: String,
       readBy: [String], // Array of user IDs who have read the message
       createdAt: {
