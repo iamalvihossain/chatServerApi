@@ -43,6 +43,7 @@ io.on("connection", (socket) => {
       listingOwnerEmail,
       listingOwnerName,
       senderEmail,
+      listingType,
     }) => {
       const room = `${listingId} - ${userId}`;
       try {
@@ -65,6 +66,7 @@ io.on("connection", (socket) => {
           pic,
           listingOwnerEmail,
           listingOwnerName,
+          listingType,
           readBy: [senderId], // Add the sender's ID to the readBy array
         });
         await messageDoc.save();
@@ -81,6 +83,7 @@ io.on("connection", (socket) => {
           listingOwnerEmail,
           listingOwnerName,
           senderEmail,
+          listingType,
         });
       } catch (error) {
         console.error("Error saving message:", error);

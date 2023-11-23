@@ -14,6 +14,7 @@ const messageSchema = new mongoose.Schema({
       senderId: String,
       listingId: String,
       listingOwner: String,
+      listingType:String,
       text: String,
       pic: String,
       title: String,
